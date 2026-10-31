@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11120f"><title>Frame — Your video library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="/"><span class="brand-mark">f<span>.</span></span><span>frame<span class="brand-dot">.</span></span></a>
+      <div class="side-label">YOUR LIBRARY</div>
+      <button class="nav-item active"><span class="nav-icon">▧</span> Series <span class="nav-count" id="series-count">0</span></button>
+      <button class="nav-item" id="add-nav"><span class="nav-icon">＋</span> Add episodes</button>
+      <div class="sidebar-bottom"><div class="status-dot"></div><span>LOCAL LIBRARY</span></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div class="breadcrumb">LIBRARY <span>/</span> <b>YOUR SERIES</b></div><button class="upload-top" id="top-upload"><span>＋</span> Upload episode</button></header>
+      <section class="intro"><div class="eyebrow"><span class="eyebrow-line"></span> YOUR PERSONAL SCREENING ROOM</div><h1>Stories, <em>in order.</em></h1><p class="intro-copy">Your own little corner for the shows you love.</p></section>
+      <section class="library-panel">
+        <div class="section-heading"><div><div class="eyebrow small">THE COLLECTION</div><h2>Your series</h2></div><div class="library-count"><span id="episode-total">0</span> EPISODES</div></div>
+        <div id="empty" class="empty-state"><div class="empty-icon"><span>▶</span></div><h3>Your next favorite lives here.</h3><p>Add the first episode to start building your library.</p><button class="primary-button" id="empty-upload"><span>＋</span> Add your first episode</button></div>
+        <div id="collection" class="collection hidden">
+          <div class="collection-controls"><div><label class="control-label" for="season-select">SEASON</label><select id="season-select"></select></div><div class="season-meta" id="season-meta"></div></div>
+          <div id="episode-list" class="episode-list"></div>
+        </div>
+      </section>
+      <footer><span>MADE FOR YOUR WATCHLIST</span><span>FRAME <i>●</i> PRIVATE BY DESIGN</span></footer>
+    </main>
+    <aside class="watch-rail"><div class="rail-title"><span class="rail-line"></span> NOW PLAYING</div><div class="player-wrap" id="player-wrap"><div class="player-placeholder"><div class="play-orbit"><span>▶</span></div><div class="player-caption">PICK AN EPISODE<br><span>YOUR SCREENING ROOM IS READY</span></div></div><video id="player" controls playsinline class="hidden"></video></div><div class="now-playing"><div class="rail-label">SELECTED EPISODE</div><h3 id="now-title">Nothing queued yet</h3><p id="now-subtitle">Choose an episode from your library.</p></div><div class="rail-note"><span class="note-icon">✳</span><div><b>Your library stays yours.</b><p>Videos are stored on this server and streamed directly to your browser.</p></div></div><div class="rail-decoration">F<span>/</span>01</div></aside>
+  </div>
+
+  <dialog id="upload-dialog" class="upload-dialog"><form id="upload-form"><button type="button" class="dialog-close" id="close-dialog" aria-label="Close">×</button><div class="eyebrow small">GROW YOUR LIBRARY</div><h2>Add an episode</h2><p class="dialog-copy">Choose an episode file and tell us where it belongs.</p>
+    <label class="drop-zone" id="drop-zone"><input id="file-input" type="file" accept="video/mp4,video/webm,video/quicktime,video/x-m4v,video/ogg,.mp4,.webm,.mov,.m4v,.ogv" required><span class="upload-icon">↑</span><b id="file-label">Drop a video here or <u>browse files</u></b><small>MP4, WebM, MOV, M4V or OGV · large files supported</small></label>
+    <div class="form-grid"><label>SEASON<input name="season" type="number" min="1" max="999" value="1" required></label><label>EPISODE<input name="episode" type="number" min="1" max="9999" value="1" required></label></div><label class="title-field">EPISODE TITLE <span class="optional">OPTIONAL</span><input name="title" type="text" maxlength="160" placeholder="e.g. The beginning"></label>
+    <div class="progress-area hidden" id="progress-area"><div class="progress-copy"><span id="progress-label">Preparing upload…</span><span id="progress-percent">0%</span></div><div class="progress-track"><div id="progress-bar"></div></div></div><button class="primary-button submit-button" id="submit-upload" type="submit">Upload episode <span>↗</span></button><div id="form-error" class="form-error" role="alert"></div>
+  </form></dialog>
+  <script src="/app.js"></script>
+</body></html>

@@ -1,0 +1,8 @@
+{
+  "name": "episode-library",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A self-hosted video library with season and episode selection and chunked large-file uploads.",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}
